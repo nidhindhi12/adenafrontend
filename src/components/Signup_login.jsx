@@ -32,7 +32,7 @@ const Signup_login = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${Base_url}/api/`, addUser);
+            const response = await axios.post(`${Base_url}api/`, addUser);
             if (response.data.status) {
                  localStorage.setItem("token", response.data.data.token);
                 localStorage.setItem("user", JSON.stringify(response.data.data.data));
@@ -51,7 +51,7 @@ const Signup_login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${Base_url}/api/loginuser`, addUser);
+            const response = await axios.post(`${Base_url}api/loginuser`, addUser);
 
             if (response.data.status) {
                   localStorage.setItem("token", response.data.data.token);
