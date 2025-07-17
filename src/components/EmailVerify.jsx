@@ -13,7 +13,7 @@ const EmailVerify = () => {
     const verifyemail = async () => {
       try {
         const response = await axios.get(`${Baseurl}api/verify-email/${token}`);
-        console.log(response);
+       
         if (response.data.data.status) {
           seta('true');
         }

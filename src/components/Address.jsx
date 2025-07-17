@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { togggleaddressmodel } from '../Store/slice/ModaSlice';
 import axios from 'axios'
 import { showToast } from '../Store/slice/ToastSlice';
-import {Baseurl} from './BaseUrL'
+import {Base_url} from './BaseUrL'
 
 const Address = () => {
     const address = useSelector((state) => state.modalMenu.addressmodel);
@@ -21,7 +21,7 @@ const Address = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`${Baseurl}${userredux._id}`, shippingAd);
+            const response = await axios.put(`${Base_url}${userredux._id}`, shippingAd);
            
             if (response.data.status) {
                 dispatch(showToast({ message: 'Address added successfully', type: 'success' }))
