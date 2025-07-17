@@ -8,6 +8,7 @@ import { useEffect, } from 'react';
 import axios from 'axios'
 import { showToast } from "../../Store/slice/ToastSlice";
 import { metaldata } from "../../Store/slice/ProductdataSlice";
+import { Base_url } from '../BaseUrL'
 
 const Metal = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Metal = () => {
   }
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/metal/deletemetal/${id}`);
+      const res = await axios.delete(`${Base_url}metal/deletemetal/${id}`);
       if (res.data.status) {
         dispatch(metaldata(fetchdata.filter(metal => metal.metalId !== id)));
         dispatch(showToast({ message: res.data.data.message, type: "success" }));
@@ -30,7 +31,7 @@ const Metal = () => {
   useEffect(() => {
     const fetchCMetalCount = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/metal/getmetalwithproductcount');
+        const res = await axios.get(`${Base_url}metal/getmetalwithproductcount`);
         dispatch(metaldata(res.data.data.data));
       } catch (error) {
         console.log(error);

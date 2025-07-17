@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import ProductData from '../ProductData'
 import { categorydata, metaldata, ocassiondata } from '../../Store/slice/ProductdataSlice'
+import { Base_url } from '../BaseUrL'
 
 
 const COM = (props) => {
@@ -47,20 +48,20 @@ const COM = (props) => {
             payload = { ocassionname: newChange };
         }
         try {
-            const res = await axios.post(`http://localhost:5000/${props.type}/add${props.type}`, payload);
+            const res = await axios.post(`${Base_url}/${props.type}/add${props.type}`, payload);
             if (res.data.status) {
                 if (props.type == 'category') {
-                    const updateList = await axios.get('http://localhost:5000/category/categorieswithcount');
+                    const updateList = await axios.get(`${Base_url}category/categorieswithcount`);
                     dispatch(categorydata(updateList.data.data.data));
                     setNewChange('');
                 }
                 else if (props.type === 'metal') {
-                    const updateList = await axios.get('http://localhost:5000/metal/getmetalwithproductcount');
+                    const updateList = await axios.get(`${Base_url}metal/getmetalwithproductcount`);
                     dispatch(metaldata(updateList.data.data.data));
                     setNewChange('');
                 }
                 else {
-                    const updateList = await axios.get('http://localhost:5000/ocassion/getocassionwithproductcount');
+                    const updateList = await axios.get(`${Base_url}ocassion/getocassionwithproductcount`);
                     dispatch(ocassiondata(updateList.data.data.data));
                     setNewChange('')
                 }
@@ -86,17 +87,17 @@ const COM = (props) => {
         }
 
         try {
-            const res = await axios.put(`http://localhost:5000/${props.type}/update${props.type}/${selCatId._id}`, payload);
+            const res = await axios.put(`${Base_url}/${props.type}/update${props.type}/${selCatId._id}`, payload);
             if (res.data.status) {
                 if (props.type === 'category') {
-                    const updateList = await axios.get('http://localhost:5000/category/categorieswithcount');
+                    const updateList = await axios.get(`${Base_url}category/categorieswithcount`);
                     dispatch(categorydata(updateList.data.data.data));
                 } else if (props.type === 'metal') {
-                    const updateList = await axios.get('http://localhost:5000/metal/getmetalwithproductcount');
+                    const updateList = await axios.get(`${Base_url}metal/getmetalwithproductcount`);
                     dispatch(metaldata(updateList.data.data.data));
 
                 } else {
-                    const updateList = await axios.get('http://localhost:5000/ocassion/getocassionwithproductcount');
+                    const updateList = await axios.get(`${Base_url}ocassion/getocassionwithproductcount`);
                     dispatch(ocassiondata(updateList.data.data.data));
                 }
                 dispatch(showToast({ message: res.data.data.message, type: "success" }));

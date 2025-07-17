@@ -14,6 +14,7 @@ import { clearLogout } from '../Store/slice/AuthSlice';
 import { headerdata } from './Data';
 import axios from 'axios'
 import { showToast } from '../Store/slice/ToastSlice';
+import {Baseurl} from './BaseUrL'
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const Header = () => {
 
     const handleReset = async () => {
         try {
-            const response = await axios.post(`http://localhost:5000/api/reset-password-link/${user._id}`);
+            const response = await axios.post(`${Baseurl}api/reset-password-link/${user._id}`);
 
             console.log(response);
             if (response.data.status) {

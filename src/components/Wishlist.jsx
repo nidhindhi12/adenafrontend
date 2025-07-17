@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showToast } from '../Store/slice/ToastSlice';
 import { countofwislist } from '../Store/slice/FilterSlice';
 import { handleaddproduct } from './Addproduct';
-
+import { Base_url } from './BaseUrL';
 const Wishlist = () => {
   const [wishlistproducts, setWishlistProducts] = useState([]);
 
@@ -19,7 +19,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/wishlist/getwishlist', {
+        const res = await axios.get(`${Base_url}/wishlist/getwishlist`, {
           headers: {
             authorization: `Bearer ${token}`
           },
@@ -44,7 +44,7 @@ const Wishlist = () => {
 
 
     try {
-      const res = await axios.delete(`http://localhost:5000/wishlist/removewishlist/${productId}`, {
+      const res = await axios.delete(`${Base_url}/wishlist/removewishlist/${productId}`, {
         headers: {
           authorization: `Bearer ${token}`
         }

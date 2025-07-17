@@ -2,6 +2,7 @@ import axios from 'axios';
 import { changeIsOpen } from '../Store/slice/ModaSlice';
 import { showToast } from '../Store/slice/ToastSlice';
 import { countofwislist } from '../Store/slice/FilterSlice';
+import { Base_url } from './BaseUrL';
 
 
 export const addToWishlist = async (productId, dispatch) => {
@@ -14,7 +15,7 @@ export const addToWishlist = async (productId, dispatch) => {
 
   try {
     const res = await axios.post(
-      'http://localhost:5000/wishlist/addwishlist',
+      `${Base_url}/wishlist/addwishlist`,
       { productId },
       {
         headers: {
@@ -25,7 +26,7 @@ export const addToWishlist = async (productId, dispatch) => {
 
     if (res.data.status) {
       dispatch(showToast({ message: res.data.data.message, type: 'success' }));
-      const updatedWishlist = await axios.get('http://localhost:5000/wishlist/getwishlist', {
+      const updatedWishlist = await axios.get(`${Base_url}/wishlist/getwishlist`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

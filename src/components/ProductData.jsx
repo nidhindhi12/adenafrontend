@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { categorydata, genderdata, metaldata, ocassiondata } from '../Store/slice/ProductdataSlice';
 import { countofwislist, showallproduct } from '../Store/slice/FilterSlice';
-
+import { Base_url } from './BaseUrL';
 const ProductData = () => {
     const dispatch = useDispatch();
 
@@ -11,7 +11,7 @@ const ProductData = () => {
 
         const categoryData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/category/readcategorydata');
+                const res = await axios.get(`${Base_url}category/readcategorydata`);
                 dispatch(categorydata(res.data.data.data));
             } catch (error) {
                 console.log(error);
@@ -20,7 +20,7 @@ const ProductData = () => {
         categoryData();
         const genderData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/gender/readgenderdata')
+                const res = await axios.get(`${Base_url}gender/readgenderdata`)
                 dispatch(genderdata(res.data.data.data));
             } catch (error) {
                 console.log(error);
@@ -29,7 +29,7 @@ const ProductData = () => {
         genderData();
         const metalData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/metal/readmetaldata');
+                const res = await axios.get(`${Base_url}metal/readmetaldata`);
 
                 dispatch(metaldata(res.data.data.data));
             } catch (error) {
@@ -39,7 +39,7 @@ const ProductData = () => {
         metalData();
         const ocassionData = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/ocassion/readocassiondata')
+                const res = await axios.get(`${Base_url}ocassion/readocassiondata`)
 
                 dispatch(ocassiondata(res.data.data.data));
             } catch (error) {
@@ -49,7 +49,7 @@ const ProductData = () => {
         ocassionData();
         const allProduct = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/product/readproducts');
+                const res = await axios.get(`${Base_url}product/readproducts`);
 
                 if (res.data.status) {
                     dispatch(showallproduct(res.data.data.data));
@@ -63,7 +63,7 @@ const ProductData = () => {
         const fetchApi = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('http://localhost:5000/wishlist/getwishlist', {
+            const res = await axios.get(`${Base_url}wishlist/getwishlist`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 },

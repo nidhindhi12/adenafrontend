@@ -1,0 +1,1 @@
+export const Base_url='https://musical-pudding-e086f4.netlify.app/'

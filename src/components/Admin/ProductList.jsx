@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toggleproductmodel } from '../../Store/slice/ModaSlice';
 import { productdata } from '../../Store/slice/ProductdataSlice';
-
 import { Table } from 'react-bootstrap'
 import axios from 'axios';
 import { useEffect, } from 'react';
-import { showToast } from '../../Store/slice/ToastSlice';
+import { Base_url } from '../BaseUrL'
+
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const ProductList = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/product/readproducts');
+        const res = await axios.get(`${Base_url}product/readproducts`);
         if (res.data.status) {
           dispatch(productdata(res.data.data.data));
 

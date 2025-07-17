@@ -10,9 +10,10 @@ import {  useParams } from 'react-router-dom';
 import { addToWishlist } from './wishfun';
 import { handleaddproduct } from './Addproduct';
 
+
 const ActualProduct = () => {
     const products = useSelector((state) => state.filterproduct.products);
-    console.log('pppp',products)
+
     const isLoading = !products || products.length === 0;
     const dispatch = useDispatch();
     const { itemName } = useParams();

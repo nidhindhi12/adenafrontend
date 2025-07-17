@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { changeauthvalue } from '../slice/AuthSlice'
+import { Base_url } from '../../components/BaseUrL'
 
 const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("token");
@@ -17,7 +18,7 @@ const AuthProvider = ({ children }) => {
                             authorization: `${token}`
                         }
                     }
-                    const res = await axios.post("http://localhost:5000/api/authverify", {}, config)
+                    const res = await axios.post(`${Base_url}/api/authverify`, {}, config)
                    
                     if (res.data.status) {
                         dispatch(changeauthvalue(res.data.data.data))

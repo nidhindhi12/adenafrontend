@@ -4,6 +4,7 @@ import { Table, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import { userdata } from '../../Store/slice/UserSlice';
+import { Base_url } from '../BaseUrL'
 
 const User = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const User = () => {
     useEffect(() => {
         const fetchuser = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/readalluser');
+                const res = await axios.get(`${Base_url}api/readalluser`);
                 dispatch(userdata(res.data.data.data));
             } catch (error) {
                 console.log(error);

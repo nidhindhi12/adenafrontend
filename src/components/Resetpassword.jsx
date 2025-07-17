@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
+import { Base_url } from './BaseUrL';
 
 const ResetPassword = () => {
     const { userId, token } = useParams();
@@ -11,7 +12,7 @@ const ResetPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/api/reset-password/${userId}/${token}`, {
+            const response = await axios.post(`${Base_url}/api/reset-password/${userId}/${token}`, {
                 newPassword
             });
             if (response.data.status) {

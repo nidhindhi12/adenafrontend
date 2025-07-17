@@ -5,8 +5,7 @@ import CreateProduct from './CreateProduct';
 import ProductData from '../ProductData';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductList from './ProductList';
-
-
+import { Base_url } from '../BaseUrL'
 
 const Product = () => {
   const initialState = {
@@ -68,7 +67,7 @@ const Product = () => {
           'Content-Type': "multipart/form-data"
         }
       }
-      const res = await axios.post('http://localhost:5000/product/addproduct', allFormData, config);
+      const res = await axios.post(`${Base_url}product/addproduct`, allFormData, config);
       if (res.data.status) {
         dispatch(showToast({ message: "product added successfully", type: "success" }));
 

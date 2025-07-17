@@ -8,6 +8,7 @@ import Address from './Address';
 import { paymentdata } from './Data';
 import axios from 'axios'
 import { showToast } from '../Store/slice/ToastSlice';
+import {Baseurl} from './BaseUrL'
 const Checkout = () => {
   const userredux = useSelector((state) => state.auth.users);
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Checkout = () => {
       }))
     };
     try {
-      const response = await axios.post(`http://localhost:5000/order/addorder/${userid}`, orderPayload)
+      const response = await axios.post(`${Baseurl}order/addorder/${userid}`, orderPayload)
       if (response.data.status) {
         dispatch(showToast({ message: response.data.data.message, type: "success" }));
         navigate('/orderplaced');

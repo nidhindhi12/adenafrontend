@@ -3,6 +3,7 @@ import { Row, Col, Container, Form, Breadcrumb, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { Base_url } from './BaseUrL';
 
 
 const UserInfo = () => {
@@ -21,14 +22,7 @@ const UserInfo = () => {
 
   useEffect(() => {
 
-    const fetchuser= async()=>{
-      try {
-        const res=await axios.get('http://localhost:5000/user/')
-      } catch (error) {
-        
-      }
-    }
-    setUpdateData({
+   setUpdateData({
       id: userInfo?._id || '',
       firstname: userInfo?.firstname || '',
       lastname: userInfo?.lastname || '',
@@ -47,7 +41,7 @@ const UserInfo = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.put(`http://localhost:5000/api/updatedata/${updateData.id}`, updateData)
+      const response = await axios.put(`${Base_url}/api/updatedata/${updateData.id}`, updateData)
       dispatch(showtoast({ message: response.data.data.message, type: "success" }))
 
       navigate('/');
