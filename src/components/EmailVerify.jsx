@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { showToast } from '../Store/slice/ToastSlice';
 import { useDispatch } from 'react-redux';
-import { Baseurl } from './BaseUrL'
+import { Base_url } from './BaseUrL'
 
 const EmailVerify = () => {
   const { token } = useParams();

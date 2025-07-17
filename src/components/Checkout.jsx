@@ -8,7 +8,7 @@ import Address from './Address';
 import { paymentdata } from './Data';
 import axios from 'axios'
 import { showToast } from '../Store/slice/ToastSlice';
-import {Baseurl} from './BaseUrL'
+import {Base_url} from './BaseUrL'
 const Checkout = () => {
   const userredux = useSelector((state) => state.auth.users);
   const navigate = useNavigate();
