@@ -41,7 +41,7 @@ const UserInfo = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.put(`${Base_url}/api/updatedata/${updateData.id}`, updateData)
+      const response = await axios.put(`${Base_url}/user/updatedata/${updateData.id}`, updateData)
       dispatch(showtoast({ message: response.data.data.message, type: "success" }))
 
       navigate('/');

@@ -13,7 +13,7 @@ const User = () => {
     useEffect(() => {
         const fetchuser = async () => {
             try {
-                const res = await axios.get(`${Base_url}api/readalluser`);
+                const res = await axios.get(`${Base_url}/user/readalluser`);
                 dispatch(userdata(res.data.data.data));
             } catch (error) {
                 console.log(error);

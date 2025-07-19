@@ -12,7 +12,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyemail = async () => {
       try {
-        const response = await axios.get(`${Baseurl}api/verify-email/${token}`);
+        const response = await axios.get(`${Base_url}user/verify-email/${token}`);
        
         if (response.data.data.status) {
           seta('true');

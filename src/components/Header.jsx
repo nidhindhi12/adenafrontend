@@ -58,7 +58,7 @@ const Header = () => {
 
     const handleReset = async () => {
         try {
-            const response = await axios.post(`${Base_url}api/reset-password-link/${user._id}`);
+            const response = await axios.post(`${Base_url}user/reset-password-link/${user._id}`);
 
             console.log(response);
             if (response.data.status) {

@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
                             authorization: `${token}`
                         }
                     }
-                    const res = await axios.post(`${Base_url}/api/authverify`, {}, config)
+                    const res = await axios.post(`${Base_url}/user/authverify`, {}, config)
                    
                     if (res.data.status) {
                         dispatch(changeauthvalue(res.data.data.data))
