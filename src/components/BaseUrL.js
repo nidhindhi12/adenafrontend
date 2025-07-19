@@ -1,1 +1,1 @@
-export const Base_url=' https://teal-babka-4bdcac.netlify.app/.netlify/functions/index/'git 
+export const Base_url=' https://teal-babka-4bdcac.netlify.app/.netlify/functions/index/'
